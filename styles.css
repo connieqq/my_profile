@@ -293,7 +293,7 @@ h1 {
   color: var(--blue);
   background: rgba(255, 255, 255, 0.74);
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .cta-row {
@@ -621,6 +621,24 @@ h2 {
   backface-visibility: hidden;
 }
 
+.card-face::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.flip-card:hover .card-face::after,
+.flip-card.is-flipped .card-face::after {
+  border-color: rgba(0, 47, 167, 0.72);
+  box-shadow: 0 0 0 3px rgba(0, 47, 167, 0.08);
+}
+
 .card-back {
   justify-content: center;
   gap: 16px;
@@ -861,7 +879,7 @@ h3 {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 18px 22px;
 }
 
@@ -882,7 +900,8 @@ h3 {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  margin-top: 14px;
+  align-self: flex-end;
+  margin-top: auto;
   padding-top: 0;
   color: var(--blue);
   font-weight: 900;
@@ -1014,9 +1033,23 @@ h3 {
   display: grid;
   align-items: center;
   padding: 16px;
+  overflow: hidden;
   transition:
     transform 180ms ease,
     border-color 180ms ease;
+}
+
+.doc-card::after,
+.tool-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .doc-card {
@@ -1025,10 +1058,17 @@ h3 {
 }
 
 .doc-card:hover,
-.doc-card.is-active,
-.tool-card:hover {
+.tool-card:hover,
+.tool-card.is-active {
   border-color: rgba(0, 47, 167, 0.28);
   transform: translateY(-3px);
+}
+
+.doc-card:hover::after,
+.tool-card:hover::after,
+.tool-card.is-active::after {
+  border-color: rgba(0, 47, 167, 0.72);
+  box-shadow: 0 0 0 3px rgba(0, 47, 167, 0.08);
 }
 
 .doc-card.is-active {
@@ -1092,6 +1132,7 @@ h3 {
 }
 
 .jump-icon {
+  position: relative;
   display: grid;
   width: 32px;
   height: 32px;
@@ -1099,12 +1140,34 @@ h3 {
   border-radius: 50%;
   color: var(--blue);
   background: rgba(0, 47, 167, 0.08);
-  font-size: 15px;
-  font-weight: 900;
+  font-size: 0;
   transition:
     color 180ms ease,
     background 180ms ease,
     transform 180ms ease;
+}
+
+.jump-icon::before,
+.jump-icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  pointer-events: none;
+}
+
+.jump-icon::before {
+  width: 12px;
+  height: 2px;
+  transform: rotate(-45deg);
+}
+
+.jump-icon::after {
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  background: transparent;
+  transform: translate(3px, -3px);
 }
 
 .doc-card .jump-icon {
