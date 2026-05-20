@@ -205,7 +205,7 @@ if (galaxyContainer && !prefersReducedMotion) {
 
       float starLight = max(max(col.r, col.g), col.b);
       vec3 brandBlue = vec3(0.0, 0.184, 0.655);
-      vec3 haloBlue = vec3(0.22, 0.52, 1.0);
+      vec3 haloBlue = vec3(0.0, 0.184, 0.655);
       vec3 highlightBlue = vec3(0.82, 0.92, 1.0);
       float halo = smoothstep(0.01, 0.16, starLight);
       float core = smoothstep(0.10, 0.38, starLight);
