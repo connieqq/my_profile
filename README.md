@@ -6,6 +6,14 @@
 
 这是一个轻量级静态网页项目，核心页面由原生 HTML、CSS 和 JavaScript 构成，不依赖复杂构建流程。项目适合直接托管到 GitHub Pages、Vercel、Netlify 等静态站点平台。
 
+
+## 主页访问链接
+
+中国大陆访问：https://cqq-ai-profile.vercel.app
+其他地区访问：https://profile.conniecai.top/
+
+欢迎合作交流～
+
 ## 本地预览
 
 直接在浏览器中打开 `index.html` 即可预览页面。
