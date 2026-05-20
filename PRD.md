@@ -177,7 +177,7 @@
 
 初始内容：
 
-1. CClaude Code、Codex   
+1. Claude Code、Codex   
    亮点：公认 TOP 级的模型和 Agent 架构，从“AI编程工具”变成你的“AI全能助手”。
    标签：AI编程、Agent助手、顶级模型
    跳转链接：https://chatgpt.com/codex
