@@ -1170,7 +1170,8 @@ h3 {
   transform: translate(3px, -3px);
 }
 
-.doc-card .jump-icon {
+.doc-card .jump-icon,
+.tool-card .jump-icon {
   background: var(--white);
 }
 
