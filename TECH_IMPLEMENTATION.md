@@ -218,7 +218,10 @@ my_profile/
 - 点击文档条目时保持默认跳转到文档链接；展开态由图书封面和书本翻页控制。
 - 展开态双页结构：左页展示当前文档标题、概述、标签、阅读按钮；右页展示当前文档对应的图标标题和流程图片。
 - 右页内容由 `data-page` 驱动切换，4 个标题依次为：`skill 搭建流程`、`open claw 框架图`、`个人转型AI/OPC的入场`、`每日AI 一手消息推送流程`。
-- 右页图片资源依次为 `assets/cookbook/cookbook_1.png`、`assets/cookbook/cookbook_2.png`、`assets/cookbook/cookbook_3.png`、`assets/cookbook/cookbook_4.png`；图片使用 `object-fit: contain` 适配书页，保持完整可读，不裁切关键内容。
+- 右页图片资源依次为 `assets/cookbook/cookbook_1.png`、`assets/cookbook/cookbook_2.png`、`assets/cookbook/cookbook_3.png`、`assets/cookbook/cookbook_4.png`；HTML 使用 `<picture>` 优先加载同名 `.webp`，PNG 作为 fallback。
+- 替换任意 cookbook PNG 原图后，必须重新生成对应同名 WebP，并同步更新 `<img>` 的 `width` / `height`。当前 `cookbook_1.png` 与 `cookbook_1.webp` 尺寸为 `1441 x 1245`。
+- `.book-spread` 桌面端使用固定高度，避免翻页时因流程图宽高比不同导致图书整体高度跳动；右页图片容器占用固定剩余空间，图片使用 `object-fit: contain` 适配书页，保持完整可读，不裁切关键内容。
+- 窄屏下 `.book-spread` 使用响应式固定高度和单列上下页布局，翻页按钮不得遮挡阅读按钮，流程图仍在限定区域内等比适配。
 - 上一页/下一页按钮按文档页顺序切换；在第 1 页点击上一页、最后一页点击下一页时关闭展开态并回到默认封面。
 - 链接为空时统一使用 `TODO: cookbook-link`。
 - 页面占比保持轻量，不做完整博客系统。
@@ -417,6 +420,7 @@ my_profile/
 
 - 每张 Experience 卡片使用 `.flip-card` 容器和内部 `.flip-card-inner`。
 - `.experience-art` 使用背景图承载正面视觉素材；图片层不参与翻面逻辑，避免因替换 `<img>` 影响卡片尺寸或 3D 层级。
+- `.experience-art` 默认保留原 JPG/PNG 背景图；支持 `image-set()` 的浏览器通过 `@supports` 优先加载同名 WebP，原图作为 CSS fallback。
 - `.experience-art::before` 保留右下角 `data-initial` 文案层；不使用 `.experience-art::after` 椭圆描边。
 - 点击卡片时切换 `is-flipped`。
 - 键盘 Enter 或 Space 触发同样行为。
@@ -431,6 +435,7 @@ my_profile/
 - 展开态通过 `#cookbook.is-open` 控制：隐藏封面和右侧索引，在封面原位置显示 `.book-reader` 双页书本。
 - `.book-reader` 内保留上一页/下一页按钮；第 1 页点击上一页、最后一页点击下一页时关闭展开态并回到封面。
 - 每个文档页需要提供阅读链接；右侧使用 `.flow-page-content[data-page]` 与左页同步切换，内部包含 `.flow-title` 和 `.flow-image`。
+- `.book-spread` 高度必须稳定，翻页只切换内容，不改变整本书的外部高度；流程图由 `.flow-page-content picture` 承接剩余空间，`.flow-image` 使用 `height: 100%` 和 `object-fit: contain` 适配。
 
 ### 8.5 滚动显现
 
@@ -457,7 +462,12 @@ my_profile/
 ### 9.2 图片规范
 
 - 项目截图优先放在 `assets/projects/`。
-- 头像优先放在 `assets/`。
+- 头像优先放在 `assets/avatars/`。
+- 图片加载优先使用同名 `.webp`，原 JPG/PNG 保留作为 fallback 和后续素材维护来源。
+- 普通内容图使用 `<picture>`：`source type="image/webp"` 优先，`img src` 指向原图 fallback；所有可见图片补充 `width` / `height`，减少布局抖动。
+- 首屏头像使用 `fetchpriority="high"` 和 `decoding="async"`；非首屏项目图、cookbook 图使用 `loading="lazy"` 和 `decoding="async"`。
+- 保留 PNG/JPG 不会直接影响现代浏览器页面加载，因为浏览器只请求命中的 WebP 或 fallback 之一；它们只影响仓库和部署包体积。
+- 只有在确认不需要兼容 fallback 且代码引用全部切到 WebP 后，才考虑删除原 PNG/JPG。
 - 缺图时使用 CSS 生成视觉占位，而不是引用不存在的图片。
 - 图片必须有 `alt`，CSS 视觉占位必须有 `aria-label`。
 
@@ -549,6 +559,8 @@ TODO: project-image
 - AI Cookbook 已补齐 4 个文档条目，并实现图书封面、文档索引、双页展开、翻页和右页流程图片展示。
 - AI Cookbook 展开态右页已更新为图标标题和真实流程图片，4 个文档分别映射到 `assets/cookbook/cookbook_1.png` 至 `assets/cookbook/cookbook_4.png`。
 - AI Cookbook 图书封面的 `> 点击展开` 入口已沉淀为封面内部右侧居中的圆角胶囊按钮样式。
+- 图片资源已生成 WebP 版本并优先加载，原 PNG/JPG 保留作为兼容 fallback；当前不删除原图，避免 fallback 资源 404。
+- AI Cookbook 展开态已固定图书高度，流程图在右页固定区域内等比适配；切换不同文档时图书整体高度保持稳定。
 - AI Toolkit 已替换为 PRD 指定的 NotebookLM、Stitch、Excalidraw Diagram Skill、飞书 CLI，并采用单行紧凑条目。
 - Contact 已替换为真实邮箱和 GitHub，简历保留 `TODO: resume-link`。
 
