@@ -164,8 +164,9 @@ my_profile/
 初始项目：
 
 - `多模态 AI 问答助手｜高校招生就业场景`
-- `AI Interview Coach｜面试模拟 skill`
-- `竞品分析 AI Copilot｜B端竞品分析 skill`
+- `面试模拟 skill`
+- `“面试模拟+复盘”闭环应用`
+- `B端竞品分析 skill`
 - `Time Reflection｜时间复盘可视化工具`
 
 实现要点：
@@ -182,9 +183,10 @@ my_profile/
   - 核心价值。
   - 2-3 个标签。
   - 跳转按钮。
-- 当前 4 张项目图统一存放在 `assets/projects/`：
+- 当前 5 张项目图统一存放在 `assets/projects/`：
   - `ChatGPT Image 2026年5月20日 00_38_02.png`
   - `ChatGPT Image 2026年5月19日 23_52_19.png`
+  - `Interview_digest.png`，交付优先加载压缩后的 `Interview_digest.webp`
   - `ChatGPT Image 2026年5月20日 00_15_46.png`
   - `ChatGPT Image 2026年5月20日 00_43_19.png`
 - 真实截图或风格化项目图优先；没有截图时使用统一视觉占位。
@@ -194,7 +196,8 @@ my_profile/
 已知项目链接：
 
 - 多模态 AI 问答助手：`https://zxt.xiaoyibang.com/app?id=oWRkYODiPv`
-- AI Interview Coach：`https://github.com/connieqq/jd-to-interview-mock`
+- 面试模拟 skill：`https://github.com/connieqq/jd-to-interview-mock`
+- “面试模拟+复盘”闭环应用：`https://github.com/connieqq/my_profile`
 - Time Reflection：`https://github.com/connieqq/timelinefly`
 
 ### 5.4 AI Cookbook
@@ -487,7 +490,7 @@ TODO: project-image
 1. 对齐 `PRD.md` 与当前 `index.html` 的内容差异。
 2. 补齐 Hero 的定位语、标签和 CTA 占位。
 3. 补齐 Experience 5 条经历，并实现竖向卡片 + 横向滑动时间轴 + 点击翻面。
-4. 补齐 AI Works 4 个项目的真实链接、项目图、标签和按钮。
+4. 补齐 AI Works 5 个项目的真实链接、项目图、标签和按钮。
 5. 补齐 AI Cookbook 4 个文档条目，并实现图书封面、文档索引、双页展开和翻页交互。
 6. 补齐 AI Toolkit 4 个工具条目和真实链接，并改为单行紧凑列表。
 7. 补齐 Contact 的邮箱、GitHub 和简历入口。
@@ -507,7 +510,7 @@ TODO: project-image
 - Experience 至少展示 5 条经历，且按 PRD 倒序排列。
 - Experience 以横向时间轴左右滑动查看，卡片为竖向布局。
 - Experience 卡片正面包含视觉占位、组织名称、角色、时间、一句话概要和标签，并支持点击和键盘翻面。
-- AI Works 至少展示 4 个项目。
+- AI Works 至少展示 5 个项目。
 - 每个 AI Work 都有图片或视觉占位、标签和跳转按钮。
 - AI Works 桌面端保持横向项目卡片，右侧文字区域不出现大块空白。
 - AI Works hover 态有明显渐变描边和悬浮反馈。
@@ -554,7 +557,7 @@ TODO: project-image
 - Hero 已使用 PRD 中的完整定位语和 `AI Native PM`、`Vibe Coding Builder`、`Strategy-Driven` 标签。
 - Hero 已删除首屏 `下载简历` 按钮，仅保留 `查看作品集`；该 CTA 已调整为带箭头 icon 的轻量文字按钮，避免实心按钮样式过重。
 - Experience 已补充 `AI 产品经理｜2026`，并采用竖向卡片 + 横向滑动时间轴 + 点击/键盘翻面。
-- AI Works 已更名并统一页面文案；4 个项目图已替换为 `assets/projects/` 下的风格化项目图片，未知链接使用 `TODO: project-link`。
+- AI Works 已更名并统一页面文案；5 个项目图已替换为 `assets/projects/` 下的风格化项目图片，未知链接使用 `TODO: project-link`。
 - AI Works 已改为桌面端横向卡片布局，并压缩卡片高度；hover 态使用更明显的蓝色系渐变描边和 glow。
 - AI Cookbook 已补齐 4 个文档条目，并实现图书封面、文档索引、双页展开、翻页和右页流程图片展示。
 - AI Cookbook 展开态右页已更新为图标标题和真实流程图片，4 个文档分别映射到 `assets/cookbook/cookbook_1.png` 至 `assets/cookbook/cookbook_4.png`。

@@ -105,25 +105,31 @@
    标签：`LLM+RAG` `多模态交互` `0到1落地`
    跳转链接：https://zxt.xiaoyibang.com/app?id=oWRkYODiPv
 
-2. AI Interview Coach ｜面试模拟 skill
+2. 面试模拟 skill
    图片资源：`assets/projects/ChatGPT Image 2026年5月19日 23_52_19.png`。  
    核心价值：基于 JD + 简历生成结构化面试准备页，提升求职准备效率。  
    标签：`Skill工作流` `面试模拟` `效率工具`
    跳转链接：https://github.com/connieqq/jd-to-interview-mock
 
-3. 竞品分析 AI Copilot｜B端竞品分析 skill
+3. “面试模拟+复盘”闭环应用
+   图片资源： `assets/projects/Interview_digest.png`。   
+   核心价值：基于 JD + 简历生成结构化面试准备页，提升求职准备效率。  
+   标签：`求职神器` `面试模拟` `面试复盘` 
+   跳转链接：https://github.com/connieqq/my_profile
+
+4. B端竞品分析 skill
    图片资源：`assets/projects/ChatGPT Image 2026年5月20日 00_15_46.png`。  
    核心价值：沉淀 B 端 AI 产品工作流，辅助需求拆解、竞品对比、B端成本和商业化。  
    标签：`vibe coding` `Skill工作流` `竞品分析`
 
-4. Time Reflection｜时间复盘可视化工具 
+5. Time Reflection｜时间复盘可视化工具 
    图片资源：`assets/projects/ChatGPT Image 2026年5月20日 00_43_19.png`。  
    核心价值：将个人时间规划中的预期与实际进行可视化对比，辅助复盘规划和情绪觉察。  
    标签：`时间复盘` `可视化` `生活AI`
    跳转链接：https://github.com/connieqq/timelinefly
 
 展示形式：
-- 目前主要是4个项目卡片，但需要考虑到后续新增项目的排版优化和适配。
+- 目前主要是5个项目卡片，但需要考虑到后续新增项目的排版优化和适配。
 - 每张卡片包含：图片/视觉占位、项目名、场景、角色、核心价值、2-3 个标签、跳转按钮。
 - 图片区域优先使用真实项目截图；暂无截图时使用符合项目主题的视觉占位。
 - 图片加载优先使用同名 `.webp` 资源，原 PNG 保留作为 fallback；现代浏览器不会同时下载 fallback 原图，因此保留原图不影响页面加载速度。
